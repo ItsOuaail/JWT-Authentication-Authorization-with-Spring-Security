@@ -47,7 +47,7 @@ public class AuthenticationService {
         user.setRole(request.getRole());
 
         user = repository.save(user);
-        String token = jwtService.generateToken(user, 100);
+        String token = jwtService.generateToken(user, 1000000000);
 
         user = repository.save(user);
 
@@ -66,7 +66,7 @@ public class AuthenticationService {
         );
 
         User user = repository.findByUsername(request.getUsername()).orElseThrow();
-        String token = jwtService.generateToken(user, 100);
+        String token = jwtService.generateToken(user, 1000000000);
 
 
         return new AuthenticationResponse(token);
